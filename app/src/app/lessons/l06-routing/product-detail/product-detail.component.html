@@ -1,0 +1,15 @@
+@if (product) {
+  <h2>{{ product.name }}</h2>
+  <p>Price: \${{ product.price }}</p>
+
+  <label>
+    Description
+    <textarea [(ngModel)]="draftDescription" rows="3" style="width:100%"></textarea>
+  </label>
+  <div class="actions">
+    <button (click)="save()" [disabled]="!hasUnsavedChanges()">Save</button>
+    <a routerLink="../..">Back to products (try leaving with unsaved edits!)</a>
+  </div>
+} @else {
+  <p>Product not found.</p>
+}

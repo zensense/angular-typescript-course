@@ -1,0 +1,5 @@
+.field { margin-bottom: 14px; display: flex; flex-direction: column; gap: 4px; max-width: 320px; }
+label { font-size: 0.85rem; color: #444; }
+input { padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
+.error { color: #b91c1c; font-size: 0.8rem; margin: 0; }
+.success { color: #15803d; font-weight: 600; }

@@ -1,0 +1,30 @@
+<h2>Lesson 5: Services & Dependency Injection</h2>
+
+<p>
+  <code>LoggerService</code> and <code>CounterStoreService</code> are both
+  injected into this component's constructor — Angular created them (once,
+  the first time anything asked for them) and handed over the same shared
+  instances.
+</p>
+
+<h3>Shared state via a service</h3>
+<p>Count: {{ counterStore.getCount() }}</p>
+<button (click)="increment()">Increment (via service)</button>
+<p>
+  Navigate to another lesson and back — the count is unchanged, because the
+  service instance (and its state) lives for the whole app session, not just
+  this component.
+</p>
+
+<h3>Log history</h3>
+<ul>
+  @for (entry of history; track entry) {
+    <li>{{ entry }}</li>
+  }
+</ul>
+
+<h3>Try it yourself</h3>
+<p>
+  Add a <code>decrement()</code> method to <code>CounterStoreService</code>
+  and a matching button here that calls it.
+</p>

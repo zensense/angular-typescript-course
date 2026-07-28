@@ -1,0 +1,35 @@
+<h2>Lesson 10: Signals & State</h2>
+<p>
+  <code>TodoStoreService</code> holds the todo list as a signal;
+  <code>remainingCount</code>/<code>completedCount</code> are
+  <code>computed()</code> signals derived from it. Notice that signals are
+  read by CALLING them — <code>store.todos()</code>, not
+  <code>store.todos</code> — that's what lets Angular track exactly where
+  each one is used.
+</p>
+
+<div class="add-row">
+  <input [ngModel]="newTitle()" (ngModelChange)="newTitle.set($event)" placeholder="New todo..." />
+  <button (click)="addTodo()">Add</button>
+</div>
+
+<p>{{ store.remainingCount() }} remaining, {{ store.completedCount() }} done</p>
+
+<ul>
+  @for (todo of store.todos(); track todo.id) {
+    <li [class.done]="todo.done">
+      <label>
+        <input type="checkbox" [checked]="todo.done" (change)="store.toggle(todo.id)" />
+        {{ todo.title }}
+      </label>
+      <button (click)="store.remove(todo.id)">✕</button>
+    </li>
+  }
+</ul>
+
+<h3>Try it yourself</h3>
+<p>
+  Add a <code>computed()</code> signal <code>allDone</code> that's true when
+  the list is non-empty and every todo is done, and show a "🎉 All done!"
+  message when it is.
+</p>

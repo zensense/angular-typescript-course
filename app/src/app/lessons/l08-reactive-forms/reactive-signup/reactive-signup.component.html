@@ -1,0 +1,53 @@
+<h2>Lesson 8: Reactive Forms</h2>
+
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <label for="r-username">Username</label>
+    <input id="r-username" formControlName="username" />
+    @if (username.invalid && username.touched) {
+      <p class="error">
+        @if (username.errors?.['required']) { Required. }
+        @if (username.errors?.['minlength']) { At least 3 characters. }
+        @if (username.errors?.['bannedWord']) { That word isn't allowed here. }
+      </p>
+    }
+  </div>
+
+  <div class="field">
+    <label for="r-email">Email</label>
+    <input id="r-email" formControlName="email" />
+    @if (email.invalid && email.touched) {
+      <p class="error">Enter a valid email address.</p>
+    }
+  </div>
+
+  <div class="field">
+    <label for="r-age">Age</label>
+    <input id="r-age" type="number" formControlName="age" />
+    @if (age.invalid && age.touched) {
+      <p class="error">Age must be 13 or older.</p>
+    }
+  </div>
+
+  <button type="submit" [disabled]="signupForm.invalid">Sign up</button>
+  <pre>Form valid: {{ signupForm.valid }}</pre>
+</form>
+
+@if (submitted) {
+  <p class="success">Submitted! Check the console for the raw typed value.</p>
+}
+
+<h3>Template-driven vs Reactive — when to use which</h3>
+<p>
+  Template-driven (Lesson 7) is fine for small, simple forms. Reactive Forms
+  are the better default for anything with cross-field validation, dynamic
+  fields, or forms you want to unit test without a browser — which is most
+  real production forms.
+</p>
+
+<h3>Try it yourself</h3>
+<p>
+  Add a cross-field validator on the FormGroup itself (a second argument to
+  <code>this.fb.group(...)</code>) that requires <code>username</code> and
+  <code>email</code> to not be identical strings.
+</p>

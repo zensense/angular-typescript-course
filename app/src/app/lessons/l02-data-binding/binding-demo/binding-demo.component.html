@@ -1,0 +1,36 @@
+<h2>Lesson 2: Data Binding</h2>
+
+<h3>1. Interpolation — <code>{{ '{{ expression }}' }}</code></h3>
+<p>Renders a TypeScript expression as text inside the template.</p>
+<p>Hello, {{ username }}! You've clicked {{ clickCount }} times.</p>
+
+<h3>2. Property binding — <code>[property]="expression"</code></h3>
+<p>Sets a DOM property (or an &#64;Input) from a TypeScript expression.</p>
+<input [value]="username" disabled />
+<div [style.background]="boxColor" [style.color]="'white'" class="swatch">
+  This div's background color is bound to <code>boxColor</code>.
+</div>
+<p [class.important]="isImportant">
+  This paragraph gets the <code>.important</code> class conditionally via <code>[class.important]</code>.
+</p>
+
+<h3>3. Event binding — <code>(event)="handler()"</code></h3>
+<p>Runs a method when a DOM event fires.</p>
+<button (click)="onButtonClick()">Click me</button>
+
+<h3>4. Two-way binding — <code>[(ngModel)]="property"</code></h3>
+<p>
+  Shorthand for binding a property AND listening for its change event at the
+  same time — keeps a form control and a class property in sync in both
+  directions. Requires importing <code>FormsModule</code> (see the
+  component's <code>imports</code> array).
+</p>
+<input [(ngModel)]="username" (input)="onInputChange($event)" />
+<p>Live value: {{ username }}</p>
+
+<h3>Try it yourself</h3>
+<p>
+  Add a new property <code>fontSize = 16</code> and bind it with
+  <code>[style.fontSize.px]="fontSize"</code> on the swatch <code>div</code>
+  above. Then add a button that increments it.
+</p>

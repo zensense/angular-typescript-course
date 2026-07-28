@@ -1,0 +1,15 @@
+<h2>Lesson 6: Routing</h2>
+<p>
+  This whole feature (<code>l06-routing/*</code>) is lazy-loaded — Angular only
+  fetches this code when you navigate here. Inside it there's a nested route
+  with a route parameter and a "leave without saving?" guard.
+</p>
+<p><a routerLink="products">View products →</a></p>
+
+<h3>What to notice in the code</h3>
+<ul>
+  <li><code>app.routes.ts</code> uses <code>loadChildren</code> to lazy-load <code>l06-routing.routes.ts</code>.</li>
+  <li><code>product-list</code> links to <code>product-detail</code> using a route parameter: <code>/l06-routing/products/2</code>.</li>
+  <li><code>product-detail</code> reads that parameter via <code>ActivatedRoute</code>.</li>
+  <li>Editing the description field, then trying to navigate away, triggers <code>canLeaveGuard</code>.</li>
+</ul>

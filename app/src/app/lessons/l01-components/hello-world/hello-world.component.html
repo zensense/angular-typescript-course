@@ -1,0 +1,27 @@
+<h2>Lesson 1: Components & Templates</h2>
+<p>Every screen in an Angular app is a tree of components like this one.</p>
+
+<p>This heading came from a TypeScript property: <strong>{{ courseTitle }}</strong></p>
+
+<h3>Composing components</h3>
+<p>
+  <code>&lt;app-profile-card&gt;</code> below is a separate component
+  (<code>profile-card.component.ts</code>). We pass it data using
+  <strong>property binding</strong> — the square brackets mean
+  "evaluate this as a TypeScript expression", not "this exact string".
+</p>
+
+@for (member of team; track member.name) {
+  <app-profile-card
+    [name]="member.name"
+    [role]="member.role"
+    [avatarEmoji]="member.avatarEmoji"
+  />
+}
+
+<h3>Try it yourself</h3>
+<p>
+  Add a third object to the <code>team</code> array in
+  <code>hello-world.component.ts</code> and confirm a third card appears
+  automatically — you never touch the DOM directly.
+</p>

@@ -1,0 +1,5 @@
+.filters { display: flex; gap: 8px; margin: 16px 0; }
+.filters button { padding: 6px 14px; border: 1px solid #ccc; border-radius: 999px; background: white; cursor: pointer; }
+.filters button.active { background: #2563eb; color: white; border-color: #2563eb; }
+.task-list { list-style: none; padding: 0; margin-top: 8px; }
+.empty { color: #888; padding: 12px 0; }

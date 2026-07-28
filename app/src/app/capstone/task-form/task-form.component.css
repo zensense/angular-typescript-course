@@ -1,0 +1,4 @@
+.task-form { display: flex; gap: 8px; margin-bottom: 4px; }
+.task-form input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
+.task-form select, .task-form button { padding: 8px; border-radius: 6px; }
+.error { color: #b91c1c; font-size: 0.8rem; margin: 4px 0 12px; }

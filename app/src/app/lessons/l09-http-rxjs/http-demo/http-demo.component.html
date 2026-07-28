@@ -1,0 +1,39 @@
+<h2>Lesson 9: HTTP & RxJS</h2>
+
+<h3>Loading a list with the async pipe</h3>
+<p>
+  <code>posts$</code> is an <code>Observable&lt;Post[]&gt;</code> — the
+  <code>| async</code> pipe below subscribes to it, unwraps the emitted
+  value, and automatically unsubscribes when this component is destroyed.
+</p>
+<ul>
+  @for (post of (posts$ | async); track post.id) {
+    <li><strong>{{ post.title }}</strong></li>
+  } @empty {
+    <li>Loading posts…</li>
+  }
+</ul>
+
+<h3>Debounced lookup by id (switchMap)</h3>
+<p>Type a post id (1–100). Requests are debounced and any in-flight request for a stale id is cancelled.</p>
+<input
+  type="number"
+  placeholder="Post id"
+  (input)="onIdInput($any($event.target).value)"
+/>
+@if (loadingPost) {
+  <p>Loading…</p>
+}
+@if (selectedPost && !loadingPost) {
+  <div class="result">
+    <strong>{{ selectedPost.title }}</strong>
+    <p>{{ selectedPost.body }}</p>
+  </div>
+}
+
+<h3>Try it yourself</h3>
+<p>
+  Add a "retry" button that re-subscribes to <code>posts$</code> by calling
+  <code>ngOnInit()</code> again (or re-assigning <code>posts$</code> from a
+  method), and see the request re-fire in your browser's Network tab.
+</p>

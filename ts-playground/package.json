@@ -1,0 +1,14 @@
+{
+  "name": "ts-playground",
+  "private": true,
+  "scripts": {
+    "run:01": "npx tsc 01-basics.ts --outDir dist --target ES2020 && node dist/01-basics.js",
+    "run:02": "npx tsc 02-interfaces-types.ts --outDir dist --target ES2020 && node dist/02-interfaces-types.js",
+    "run:03": "npx tsc 03-classes.ts --outDir dist --target ES2020 && node dist/03-classes.js",
+    "run:04": "npx tsc 04-generics.ts --outDir dist --target ES2020 && node dist/04-generics.js",
+    "run:05": "npx tsc 05-advanced-types.ts --outDir dist --target ES2020 --experimentalDecorators && node dist/05-advanced-types.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

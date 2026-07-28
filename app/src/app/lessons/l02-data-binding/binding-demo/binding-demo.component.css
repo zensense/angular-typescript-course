@@ -1,0 +1,9 @@
+.swatch {
+  padding: 16px;
+  border-radius: 8px;
+  margin: 8px 0;
+}
+.important {
+  font-weight: 700;
+  color: #b91c1c;
+}

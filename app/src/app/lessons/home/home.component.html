@@ -1,0 +1,14 @@
+<h1>Angular + TypeScript, start to finish</h1>
+<p class="intro">
+  Work through these in order — each one builds on ideas from the last.
+  Read the matching chapter in <code>GUIDE/</code> alongside the code.
+</p>
+
+<ul class="lesson-list">
+  @for (lesson of lessons; track lesson.path) {
+    <li>
+      <a [routerLink]="lesson.path">{{ lesson.title }}</a>
+      <p>{{ lesson.description }}</p>
+    </li>
+  }
+</ul>

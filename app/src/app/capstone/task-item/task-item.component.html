@@ -1,0 +1,8 @@
+<li class="task" [class.done]="task.done">
+  <label>
+    <input type="checkbox" [checked]="task.done" (change)="toggled.emit(task.id)" />
+    <span>{{ task.title }}</span>
+  </label>
+  <span class="priority" [attr.data-priority]="task.priority">{{ task.priority }}</span>
+  <button (click)="removed.emit(task.id)">✕</button>
+</li>

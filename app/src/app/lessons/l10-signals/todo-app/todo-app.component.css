@@ -1,0 +1,6 @@
+.add-row { display: flex; gap: 8px; margin-bottom: 12px; }
+.add-row input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
+ul { list-style: none; padding: 0; }
+li { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
+li.done label { text-decoration: line-through; color: #888; }
+li button { background: none; border: none; cursor: pointer; color: #b91c1c; }

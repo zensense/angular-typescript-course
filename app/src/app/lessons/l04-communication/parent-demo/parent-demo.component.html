@@ -1,0 +1,20 @@
+<h2>Lesson 4: Component Communication</h2>
+
+<h3>Parent → child: &#64;Input</h3>
+<p>The parent passes a starting value and a label down to each child.</p>
+<app-child-counter [startValue]="5" label="Counter A" (countChanged)="onCountAChanged($event)" />
+
+<h3>Child → parent: &#64;Output</h3>
+<p>Counter A emits its new value on every click; the parent is listening.</p>
+<p>Last value from Counter A: {{ lastValueFromA }} (changed {{ totalClicks }} times)</p>
+
+<h3>Direct access: &#64;ViewChild</h3>
+<p>The parent can also reach into a specific child instance by template reference.</p>
+<app-child-counter #counterB [startValue]="10" label="Counter B" />
+<button (click)="resetCounterB()">Reset Counter B from parent</button>
+
+<h3>Try it yourself</h3>
+<p>
+  Add a third <code>&lt;app-child-counter&gt;</code>, and make the parent
+  track ALL emitted values in an array instead of just "last value".
+</p>

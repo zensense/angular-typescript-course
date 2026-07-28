@@ -1,0 +1,31 @@
+<h2>Capstone: Task Manager</h2>
+<p>
+  Everything from Lessons 1–10 in one small app: components composed
+  together, &#64;Input/&#64;Output, an injectable signal-based service, reactive
+  forms, and persistence to <code>localStorage</code> via an
+  <code>effect()</code>.
+</p>
+
+<app-task-form (taskAdded)="onTaskAdded($event)" />
+
+<div class="filters">
+  <button [class.active]="tasks.filter() === 'all'" (click)="setFilter('all')">All ({{ tasks.totalCount() }})</button>
+  <button [class.active]="tasks.filter() === 'active'" (click)="setFilter('active')">Active ({{ tasks.activeCount() }})</button>
+  <button [class.active]="tasks.filter() === 'completed'" (click)="setFilter('completed')">Completed</button>
+</div>
+
+<ul class="task-list">
+  @for (task of tasks.tasks(); track task.id) {
+    <app-task-item [task]="task" (toggled)="tasks.toggle($event)" (removed)="tasks.remove($event)" />
+  } @empty {
+    <li class="empty">Nothing here yet — add a task above.</li>
+  }
+</ul>
+
+<h3>Where to go from here</h3>
+<p>
+  Ideas for extending this on your own: add due dates with a date input,
+  add editing (click a task's title to rename it in place), or add an HTTP
+  layer (Lesson 9) that syncs tasks to a real backend instead of
+  <code>localStorage</code>.
+</p>

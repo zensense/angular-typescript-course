@@ -1,0 +1,57 @@
+<h2>Lesson 3: Directives & Pipes</h2>
+
+<h3>Structural directives: two syntaxes, same job</h3>
+<p>
+  Angular 17+ has built-in control-flow syntax (<code>&#64;if</code>/<code>&#64;for</code>).
+  Most existing Angular code — and anything you'll find in older tutorials or
+  jobs still on Angular &lt;17 — uses the structural directives
+  <code>*ngIf</code>/<code>*ngFor</code> instead. They do the same thing; both are shown here.
+</p>
+
+<button (click)="toggleDetails()">Toggle details ({{ showDetails ? 'shown' : 'hidden' }})</button>
+
+<p><strong>Modern (<code>&#64;if</code>):</strong></p>
+@if (showDetails) {
+  <p>These details are visible because <code>showDetails</code> is true.</p>
+}
+
+<p><strong>Classic (<code>*ngIf</code>, requires <code>CommonModule</code>):</strong></p>
+<p *ngIf="showDetails">Same condition, old syntax.</p>
+
+<h3>Lists</h3>
+<p><strong>Modern (<code>&#64;for</code>, <code>track</code> is required):</strong></p>
+<ul>
+  @for (item of items; track item.id) {
+    <li [class.done]="item.done" (click)="toggleDone(item)">{{ item.label }}</li>
+  }
+</ul>
+
+<p><strong>Classic (<code>*ngFor</code>):</strong></p>
+<ul>
+  <li *ngFor="let item of items; trackBy: trackById" [class.done]="item.done">
+    {{ item.label }}
+  </li>
+</ul>
+
+<h3><code>ngClass</code> / <code>ngStyle</code></h3>
+<div [ngClass]="{ done: items[0].done, pending: !items[0].done }">
+  First item styled via <code>ngClass</code> based on its <code>done</code> state.
+</div>
+<div [ngStyle]="{ fontWeight: showDetails ? 'bold' : 'normal' }">
+  Font weight styled via <code>ngStyle</code>, tied to <code>showDetails</code>.
+</div>
+
+<h3>Custom pipe: <code>shout</code></h3>
+<p>{{ 'angular is fun' | shout }}</p>
+<p>{{ 'angular is fun' | shout:3 }}</p>
+
+<h3>Custom attribute directive: <code>appHighlight</code></h3>
+<p appHighlight>Hover over me (default highlight color).</p>
+<p [appHighlight]="'#bbf7d0'">Hover over me (green, passed as an input).</p>
+
+<h3>Try it yourself</h3>
+<p>
+  Add a <code>reverse</code> pipe (new file, similar shape to
+  <code>shout.pipe.ts</code>) that reverses a string, and use it on a
+  paragraph here.
+</p>
